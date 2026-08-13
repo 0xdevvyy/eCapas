@@ -3,15 +3,12 @@
 @source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
 @source '../../storage/framework/views/*.php';
 
-
-
 /* the color scheme can still change */
 @theme inline {
     --font-sans:
         Instrument Sans, ui-sans-serif, system-ui, sans-serif,
         'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
         'Noto Color Emoji';
-
 
     --radius-lg: var(--radius);
     --radius-md: calc(var(--radius) - 2px);
@@ -134,9 +131,6 @@
     --sidebar-ring: hsl(24 81% 54%);
 }
 
-
-
-
 .dark {
     --background: hsl(230 37% 7%);
     --foreground: hsl(60 17% 95%);
@@ -191,7 +185,6 @@
 
     --sidebar: hsl(234 42% 9%);
 }
-
 
 @layer base {
     * {
