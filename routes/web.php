@@ -1,5 +1,15 @@
 <?php
 
+use App\Http\Controllers\LandingPageController;
 use Illuminate\Support\Facades\Route;
 
-Route::inertia('/', 'Welcome')->name('home');
+// Route::inertia('/', 'Welcome')->name('home');
+
+
+Route::get('/', [LandingPageController::class, 'home'])->name('landing.home');
+Route::get('/about', [LandingPageController::class, 'about'])->name('landing.about');
+Route::get('/announcement', [LandingPageController::class, 'announcement'])->name('landing.announcement'); 
+Route::get('/services', [LandingPageController::class, 'services'])->name('landing.services');
+Route::get('/contact', [LandingPageController::class, 'contact'])->name('landing.contact');
+
+//post for contact
