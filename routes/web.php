@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/', [LandingPageController::class, 'home'])->name('landing.home');
+Route::inertia('/test', 'Test')->name('landing.test');
 Route::get('/about', [LandingPageController::class, 'about'])->name('landing.about');
 Route::get('/announcement', [LandingPageController::class, 'announcement'])->name('landing.announcement'); 
 Route::get('/services', [LandingPageController::class, 'services'])->name('landing.services');
