@@ -85,124 +85,145 @@
     }
 }
 
-/* =========================================================
-   LIGHT MODE
-   ========================================================= */
-
-:root {
+:root,
+.dark {
     /*
-     * Main background
-     * Soft white with a very subtle green/ocean tint.
+     * =========================================================
+     * DARK OCEANIC + COOL WATERS
+     * =========================================================
+     *
+     * Oceanic Depths
+     * #007E25  #015F2E  #024137  #032240  #040349
+     *
+     * Cool Waters
+     * #22577A  #38A3A5  #57CC99  #80ED99  #C7F9CC
      */
-    --background: hsl(126 81% 97%);
-    --foreground: hsl(241 92% 15%);
+
+    /*
+     * Background
+     *
+     * #040349
+     * Deepest Ocean
+     */
+    --background: hsl(241 92% 8%);
+    --foreground: hsl(0 0% 96%);
 
     /*
      * Cards
-     * .
+     *
+     * #032240
+     * Deep Ocean
      */
-    --card: hsl(0 0% 100%);
-    --card-foreground: hsl(241 92% 15%);
+    --card: hsl(210 91% 13%);
+    --card-foreground: hsl(0 0% 96%);
 
-    --popover: hsl(0 0% 100%);
-    --popover-foreground: hsl(241 92% 15%);
+    /*
+     * Popovers / Dialogs
+     */
+    --popover: hsl(210 91% 13%);
+    --popover-foreground: hsl(0 0% 96%);
 
     /*
      * PRIMARY
      *
-     * Deep Ocean / Navy
-     * #040349
+     * #22577A
+     * Ocean Blue
      *
-     * Use for:
-     * - Main buttons
-     * - Headings
-     * - Navbar
-     * - Strong branding
+     * Main buttons
+     * Headings
+     * Navigation
+     * Important UI
      */
-    --primary: hsl(241 92% 15%);
+    --primary: hsl(204 56% 31%);
     --primary-foreground: hsl(0 0% 100%);
 
     /*
      * SECONDARY
      *
-     * Ocean Blue
-     * #22577A
+     * #38A3A5
+     * Teal
      *
-     * Use for:
-     * - Secondary buttons
-     * - Information
-     * - Supporting sections
+     * Secondary actions
+     * Information
+     * Links
      */
-    --secondary: hsl(204 56% 31%);
+    --secondary: hsl(181 49% 43%);
     --secondary-foreground: hsl(0 0% 100%);
 
     /*
      * MUTED
      *
-     * Pale Green
-     * #C7F9CC
+     * #024137
+     * Deep Green
      *
-     * Use for:
-     * - Soft section backgrounds
-     * - Disabled areas
-     * - Subtle cards
+     * Secondary backgrounds
+     * Subtle containers
      */
-    --muted: hsl(126 81% 88%);
-    --muted-foreground: hsl(170 94% 13%);
+    --muted: hsl(170 94% 13%);
+    --muted-foreground: hsl(134 75% 72%);
 
     /*
      * ACCENT
      *
-     * Teal
-     * #38A3A5
+     * #57CC99
+     * Fresh Green
      *
-     * Use for:
-     * - Links
-     * - Highlights
-     * - Icons
-     * - Secondary CTAs
+     * CTA highlights
+     * Success
+     * Active states
      */
-    --accent: hsl(181 49% 43%);
-    --accent-foreground: hsl(0 0% 100%);
+    --accent: hsl(154 53% 57%);
+    --accent-foreground: hsl(170 94% 13%);
 
     /*
-     * Destructive
+     * DESTRUCTIVE
      *
-     * Kept red for errors because green/blue should
-     * not be used to communicate destructive actions.
+     * Kept red for errors / dangerous actions.
      */
-    --destructive: hsl(0 72% 51%);
+    --destructive: hsl(0 65% 55%);
     --destructive-foreground: hsl(0 0% 100%);
 
     /*
      * Borders
+     *
+     * Teal with low opacity
      */
-    --border: hsl(154 53% 90%);
-    --input: hsl(154 53% 90%);
-    --ring: hsl(181 49% 43%);
+    --border: hsl(181 49% 43% / 25%);
+    --input: hsl(181 49% 43% / 30%);
 
     /*
-     * Charts
+     * Focus ring
      */
-    --chart-1: hsl(241 92% 15%); /* #040349 */
-    --chart-2: hsl(204 56% 31%); /* #22577A */
-    --chart-3: hsl(181 49% 43%); /* #38A3A5 */
-    --chart-4: hsl(154 53% 57%); /* #57CC99 */
+    --ring: hsl(154 53% 57%);
+
+    /*
+     * =========================================================
+     * CHARTS
+     * =========================================================
+     */
+
+    --chart-1: hsl(204 56% 31%); /* #22577A */
+    --chart-2: hsl(181 49% 43%); /* #38A3A5 */
+    --chart-3: hsl(154 53% 57%); /* #57CC99 */
+    --chart-4: hsl(134 75% 72%); /* #80ED99 */
     --chart-5: hsl(138 100% 25%); /* #007E25 */
 
     /*
-     * Sidebar
+     * =========================================================
+     * SIDEBAR
+     * =========================================================
      *
-     * Deep Oceanic Navy
+     * Use the deepest navy for the sidebar so it feels
+     * separate from the main content.
      */
-    --sidebar-background: hsl(210 91% 13%);
-    --sidebar-foreground: hsl(0 0% 100%);
+
+    --sidebar-background: hsl(241 92% 6%);
+    --sidebar-foreground: hsl(0 0% 96%);
 
     /*
      * Sidebar primary
      *
      * Fresh Green
-     * #57CC99
      */
     --sidebar-primary: hsl(154 53% 57%);
     --sidebar-primary-foreground: hsl(170 94% 13%);
@@ -211,109 +232,19 @@
      * Sidebar accent
      *
      * Teal
-     * #38A3A5
      */
-    --sidebar-accent: hsl(181 49% 43%);
-    --sidebar-accent-foreground: hsl(0 0% 100%);
+    --sidebar-accent: hsl(170 94% 13%);
+    --sidebar-accent-foreground: hsl(134 75% 72%);
 
     --sidebar-border: hsl(181 49% 43% / 20%);
     --sidebar-ring: hsl(154 53% 57%);
-}
 
+    --sidebar: hsl(241 92% 6%);
+}
 
 /* =========================================================
-   DARK MODE
+   BASE
    ========================================================= */
-
-.dark {
-    /*
-     * Deepest Ocean
-     * #040349
-     */
-    --background: hsl(241 92% 8%);
-    --foreground: hsl(126 81% 88%);
-
-    /*
-     * Cards
-     */
-    --card: hsl(210 91% 13%);
-    --card-foreground: hsl(126 81% 88%);
-
-    --popover: hsl(210 91% 13%);
-    --popover-foreground: hsl(126 81% 88%);
-
-    /*
-     * Primary
-     *
-     * Ocean Blue
-     */
-    --primary: hsl(204 56% 31%);
-    --primary-foreground: hsl(0 0% 100%);
-
-    /*
-     * Secondary
-     *
-     * Teal
-     */
-    --secondary: hsl(181 49% 43%);
-    --secondary-foreground: hsl(0 0% 100%);
-
-    /*
-     * Muted
-     *
-     * Dark Ocean
-     */
-    --muted: hsl(170 94% 13%);
-    --muted-foreground: hsl(126 81% 72%);
-
-    /*
-     * Accent
-     *
-     * Fresh Green
-     */
-    --accent: hsl(154 53% 57%);
-    --accent-foreground: hsl(170 94% 13%);
-
-    /*
-     * Destructive
-     */
-    --destructive: hsl(0 65% 55%);
-    --destructive-foreground: hsl(0 0% 100%);
-
-    /*
-     * Borders
-     */
-    --border: hsl(181 49% 43% / 25%);
-    --input: hsl(181 49% 43% / 25%);
-    --ring: hsl(154 53% 57%);
-
-    /*
-     * Charts
-     */
-    --chart-1: hsl(204 56% 31%); /* #22577A */
-    --chart-2: hsl(181 49% 43%); /* #38A3A5 */
-    --chart-3: hsl(154 53% 57%); /* #57CC99 */
-    --chart-4: hsl(134 75% 72%); /* #80ED99 */
-    --chart-5: hsl(138 100% 25%); /* #007E25 */
-
-    /*
-     * Sidebar
-     */
-    --sidebar-background: hsl(241 92% 10%);
-    --sidebar-foreground: hsl(126 81% 88%);
-
-    --sidebar-primary: hsl(154 53% 57%);
-    --sidebar-primary-foreground: hsl(170 94% 13%);
-
-    --sidebar-accent: hsl(210 91% 13%);
-    --sidebar-accent-foreground: hsl(126 81% 88%);
-
-    --sidebar-border: hsl(181 49% 43% / 25%);
-    --sidebar-ring: hsl(154 53% 57%);
-
-    --sidebar: hsl(241 92% 10%);
-}
-
 
 @layer base {
     * {

@@ -1,12 +1,14 @@
 <script setup lang="ts">
 import { Link } from '@inertiajs/vue3';
-import Preload from '../ui/loader/Preload.vue';
-
-
+import AppHeader from '../navigation/AppHeader.vue';
 </script>
 
 <template>
-    <!-- preload page is only for home -->
-    <Preload /> 
-    <slot />
+  
+    <div class="min-h-screen bg-background text-foreground">
+        <AppHeader />
+        <main>
+            <slot />
+        </main>
+    </div>
 </template>

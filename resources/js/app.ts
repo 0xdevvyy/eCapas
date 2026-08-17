@@ -1,10 +1,27 @@
 import { createInertiaApp } from '@inertiajs/vue3';
+import GuestLayout from './components/layouts/GuestLayout.vue';
+import AppLayout from './components/layouts/AppLayout.vue';
 
 const appName = import.meta.env.VITE_APP_NAME || 'eCapas';
 
 createInertiaApp({
     title: (title) => (title ? `${title} - ${appName}` : appName),
+    layout(name) {
+        if (name === 'Welcome') {
+            return null;
+        }
+
+        if (name.startsWith('/landing')) {
+            return GuestLayout;
+        }
+
+        if (name.startsWith('/auth')) {
+            return AppLayout;
+        }
+
+        return GuestLayout;
+    },
     progress: {
-        color: '#4B5563',
+        color: '#38A3A5',
     },
 });

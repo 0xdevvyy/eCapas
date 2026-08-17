@@ -1,8 +1,9 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use Inertia\Inertia;
 use Inertia\Response;
 
@@ -11,7 +12,7 @@ class LandingPageController extends Controller
     // Landing page pages: Home, About, Services, Announcements, and Contact.
     // These currently return Inertia pages.
     public function home(): Response {
-        return Inertia::render('Welcome');
+        return Inertia::render('landing/Home');
     }
 
 
@@ -20,7 +21,7 @@ class LandingPageController extends Controller
     }
 
 
-    public function service(): Response {
+    public function services(): Response {
         return Inertia::render('Welcome');
     }
 
