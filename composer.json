@@ -74,6 +74,12 @@
         "rector":[
             "vendor/bin/rector"
         ],
+        "fix":[
+            "npm run lint",
+            "npm run format",
+            "composer lint",
+            "composer rector"
+        ],
         "test": [
             "@php artisan config:clear --ansi",
             "@lint:check",

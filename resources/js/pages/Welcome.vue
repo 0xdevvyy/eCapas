@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { Head, Link } from '@inertiajs/vue3';
 import GuestLayout from '@/components/layouts/GuestLayout.vue';
-import Preload from '@/components/ui/loader/Preload.vue';
 </script>
 
 <template>
