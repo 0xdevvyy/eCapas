@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import Footer from '../Footer.vue';
 import AppHeader from '../navigation/AppHeader.vue';
 </script>
 
@@ -9,4 +10,5 @@ import AppHeader from '../navigation/AppHeader.vue';
             <slot />
         </main>
     </div>
+    <Footer />
 </template>

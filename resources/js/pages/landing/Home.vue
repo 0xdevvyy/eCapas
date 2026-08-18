@@ -155,7 +155,7 @@ const features = [
                 >
                     <!-- will change this image -->
                     <img
-                        src="/images/municipal-hall.png"
+                        src="/images/footer-image.png"
                         alt="Digital document verification illustration"
                         class="object-fit h-full w-full"
                     />
