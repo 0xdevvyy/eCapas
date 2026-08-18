@@ -11,28 +11,29 @@ class LandingPageController extends Controller
 {
     // Landing page pages: Home, About, Services, Announcements, and Contact.
     // These currently return Inertia pages.
-    public function home(): Response {
+    public function home(): Response
+    {
         return Inertia::render('landing/Home');
     }
 
-
-    public function about(): Response {
+    public function about(): Response
+    {
         return Inertia::render('Welcome');
     }
 
-
-    public function services(): Response {
+    public function services(): Response
+    {
         return Inertia::render('Welcome');
     }
 
-    public function announcement(): Response {
-        //can query announcement per brgy or whole municipal
+    public function announcement(): Response
+    {
+        // can query announcement per brgy or whole municipal
         return Inertia::render('Welcome');
     }
 
-
-    public function contact(): Response {
+    public function contact(): Response
+    {
         return Inertia::render('Welcome');
     }
-    
 }

@@ -255,3 +255,17 @@
         @apply bg-background text-foreground;
     }
 }
+
+@utility hover-bounce {
+    transition: all 200ms;
+
+    &:hover {
+        transform: translateY(-0.25rem);
+        border-color: color-mix(in oklab, var(--secondary) 50%, transparent);
+        box-shadow:
+            0 20px 25px -5px
+                color-mix(in oklab, var(--secondary) 5%, transparent),
+            0 8px 10px -6px
+                color-mix(in oklab, var(--secondary) 5%, transparent);
+    }
+}

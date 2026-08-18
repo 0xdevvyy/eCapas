@@ -1,6 +1,6 @@
 import { createInertiaApp } from '@inertiajs/vue3';
-import GuestLayout from './components/layouts/GuestLayout.vue';
 import AppLayout from './components/layouts/AppLayout.vue';
+import GuestLayout from './components/layouts/GuestLayout.vue';
 
 const appName = import.meta.env.VITE_APP_NAME || 'eCapas';
 

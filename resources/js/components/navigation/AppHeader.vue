@@ -2,16 +2,16 @@
 import { Link, usePage } from '@inertiajs/vue3';
 import { Menu, X } from '@lucide/vue';
 import { ref } from 'vue';
-import PrimaryButton from '../ui/button/PrimaryButton.vue';
-import GhostButton from '../ui/button/GhostButton.vue';
 import landing from '@/routes/landing/index.js';
+import GhostButton from '../ui/button/GhostButton.vue';
+import PrimaryButton from '../ui/button/PrimaryButton.vue';
 
 const page = usePage();
 
 const isMenuOpen = ref(false);
 
 const navItems = [
-    { name: 'Home', href: landing.home()},
+    { name: 'Home', href: landing.home() },
     { name: 'About', href: landing.about() },
     { name: 'Services', href: landing.services() },
     { name: 'Announcements', href: landing.announcement() },
@@ -50,7 +50,7 @@ const closeMenu = () => {
                     :key="item.name"
                     :href="item.href"
                     :class="[
-                        'relative whitespace-nowrap text-sm font-medium transition-colors hover:text-accent',
+                        'relative text-sm font-medium whitespace-nowrap transition-colors hover:text-accent',
                         isActive(item.href)
                             ? 'text-foreground after:absolute after:-bottom-2 after:left-0 after:h-0.5 after:w-full after:bg-primary'
                             : 'text-muted-foreground',
@@ -62,22 +62,12 @@ const closeMenu = () => {
 
             <!-- Desktop Actions -->
             <div class="hidden items-center gap-3 lg:flex">
-                <Link
-                    href="/login"
-                   
-                >
-                    <PrimaryButton>
-                        Login
-                    </PrimaryButton>
+                <Link href="/login">
+                    <PrimaryButton> Login </PrimaryButton>
                 </Link>
 
-                <Link
-                    href="/register"
-                    
-                >
-                    <GhostButton>
-                        Register
-                    </GhostButton>
+                <Link href="/register">
+                    <GhostButton> Register </GhostButton>
                 </Link>
             </div>
 
@@ -94,7 +84,6 @@ const closeMenu = () => {
             </button>
         </div>
 
-       
         <!-- Mobile Navigation -->
         <div
             v-if="isMenuOpen"
