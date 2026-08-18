@@ -71,6 +71,9 @@
         "types:check": [
             "phpstan analyse"
         ],
+        "rector":[
+            "vendor/bin/rector"
+        ],
         "test": [
             "@php artisan config:clear --ansi",
             "@lint:check",

@@ -2,8 +2,15 @@
 
 @source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
 @source '../../storage/framework/views/*.php';
+/* Color scheme:
+ *
+ * Oceanic Depths
+ * #007E25  #015F2E  #024137  #032240  #040349
+ *
+ * Cool Waters
+ * #22577A  #38A3A5  #57CC99  #80ED99  #C7F9CC
+ */
 
-/* the color scheme can still change */
 @theme inline {
     --font-sans:
         Instrument Sans, ui-sans-serif, system-ui, sans-serif,
@@ -78,118 +85,172 @@
     }
 }
 
-:root {
-    --background: hsl(51 45% 94%);
-    --foreground: hsl(39 13% 21%);
-
-    --card: hsl(0 0% 100%);
-    --card-foreground: hsl(39 13% 21%);
-
-    --popover: hsl(0 0% 100%);
-    --popover-foreground: hsl(39 13% 21%);
-
-    /* Royal Blue */
-    --primary: hsl(237 70% 28%);
-    --primary-foreground: hsl(0 0% 100%);
-
-    /* Rice Field Green */
-    --secondary: hsl(97 33% 36%);
-    --secondary-foreground: hsl(0 0% 100%);
-
-    --muted: hsl(80 24% 93%);
-    --muted-foreground: hsl(88 6% 43%);
-
-    /* Orange */
-    --accent: hsl(24 81% 54%);
-    --accent-foreground: hsl(0 0% 100%);
-
-    --destructive: hsl(8 52% 48%);
-    --destructive-foreground: hsl(0 0% 100%);
-
-    --border: hsl(79 19% 87%);
-    --input: hsl(79 19% 87%);
-    --ring: hsl(237 70% 28%);
-
-    /* Charts */
-    --chart-1: hsl(237 70% 28%);
-    --chart-2: hsl(97 33% 36%);
-    --chart-3: hsl(24 81% 54%);
-    --chart-4: hsl(42 65% 53%);
-    --chart-5: hsl(82 25% 63%);
-
-    /* Sidebar */
-    --sidebar-background: hsl(237 70% 28%);
-    --sidebar-foreground: hsl(0 0% 100%);
-
-    --sidebar-primary: hsl(24 81% 54%);
-    --sidebar-primary-foreground: hsl(0 0% 100%);
-
-    --sidebar-accent: hsl(97 33% 36%);
-    --sidebar-accent-foreground: hsl(0 0% 100%);
-
-    --sidebar-border: hsl(0 0% 100% / 12%);
-    --sidebar-ring: hsl(24 81% 54%);
-}
-
+:root,
 .dark {
-    --background: hsl(230 37% 7%);
-    --foreground: hsl(60 17% 95%);
+    /*
+     * =========================================================
+     * DARK OCEANIC + COOL WATERS
+     * =========================================================
+     *
+     * Oceanic Depths
+     * #007E25  #015F2E  #024137  #032240  #040349
+     *
+     * Cool Waters
+     * #22577A  #38A3A5  #57CC99  #80ED99  #C7F9CC
+     */
 
-    --card: hsl(228 34% 11%);
-    --card-foreground: hsl(60 17% 95%);
+    /*
+     * Background
+     *
+     * #040349
+     * Deepest Ocean
+     */
+    --background: hsl(241 92% 8%);
+    --foreground: hsl(0 0% 96%);
 
-    --popover: hsl(228 34% 11%);
-    --popover-foreground: hsl(60 17% 95%);
+    /*
+     * Cards
+     *
+     * #032240
+     * Deep Ocean
+     */
+    --card: hsl(210 91% 13%);
+    --card-foreground: hsl(0 0% 96%);
 
-    /* Royal Blue */
-    --primary: hsl(235 58% 60%);
+    /*
+     * Popovers / Dialogs
+     */
+    --popover: hsl(210 91% 13%);
+    --popover-foreground: hsl(0 0% 96%);
+
+    /*
+     * PRIMARY
+     *
+     * #22577A
+     * Ocean Blue
+     *
+     * Main buttons
+     * Headings
+     * Navigation
+     * Important UI
+     */
+    --primary: hsl(204 56% 31%);
     --primary-foreground: hsl(0 0% 100%);
 
-    /* Rice Field Green */
-    --secondary: hsl(97 31% 43%);
+    /*
+     * SECONDARY
+     *
+     * #38A3A5
+     * Teal
+     *
+     * Secondary actions
+     * Information
+     * Links
+     */
+    --secondary: hsl(181 49% 43%);
     --secondary-foreground: hsl(0 0% 100%);
 
-    --muted: hsl(226 29% 16%);
-    --muted-foreground: hsl(220 12% 68%);
+    /*
+     * MUTED
+     *
+     * #024137
+     * Deep Green
+     *
+     * Secondary backgrounds
+     * Subtle containers
+     */
+    --muted: hsl(170 94% 13%);
+    --muted-foreground: hsl(134 75% 72%);
 
-    /* Orange */
-    --accent: hsl(24 88% 59%);
-    --accent-foreground: hsl(0 0% 100%);
+    /*
+     * ACCENT
+     *
+     * #57CC99
+     * Fresh Green
+     *
+     * CTA highlights
+     * Success
+     * Active states
+     */
+    --accent: hsl(154 53% 57%);
+    --accent-foreground: hsl(170 94% 13%);
 
-    --destructive: hsl(6 63% 56%);
+    /*
+     * DESTRUCTIVE
+     *
+     * Kept red for errors / dangerous actions.
+     */
+    --destructive: hsl(0 65% 55%);
     --destructive-foreground: hsl(0 0% 100%);
 
-    --border: hsl(226 24% 20%);
-    --input: hsl(226 24% 20%);
-    --ring: hsl(235 58% 60%);
+    /*
+     * Borders
+     *
+     * Teal with low opacity
+     */
+    --border: hsl(181 49% 43% / 25%);
+    --input: hsl(181 49% 43% / 30%);
 
-    /* Charts */
-    --chart-1: hsl(235 58% 60%);
-    --chart-2: hsl(97 31% 43%);
-    --chart-3: hsl(24 88% 59%);
-    --chart-4: hsl(42 63% 54%);
-    --chart-5: hsl(84 28% 56%);
+    /*
+     * Focus ring
+     */
+    --ring: hsl(154 53% 57%);
 
-    /* Sidebar */
-    --sidebar-background: hsl(234 42% 9%);
-    --sidebar-foreground: hsl(60 17% 95%);
+    /*
+     * =========================================================
+     * CHARTS
+     * =========================================================
+     */
 
-    --sidebar-primary: hsl(24 88% 59%);
-    --sidebar-primary-foreground: hsl(0 0% 100%);
+    --chart-1: hsl(204 56% 31%); /* #22577A */
+    --chart-2: hsl(181 49% 43%); /* #38A3A5 */
+    --chart-3: hsl(154 53% 57%); /* #57CC99 */
+    --chart-4: hsl(134 75% 72%); /* #80ED99 */
+    --chart-5: hsl(138 100% 25%); /* #007E25 */
 
-    --sidebar-accent: hsl(226 29% 16%);
-    --sidebar-accent-foreground: hsl(60 17% 95%);
+    /*
+     * =========================================================
+     * SIDEBAR
+     * =========================================================
+     *
+     * Use the deepest navy for the sidebar so it feels
+     * separate from the main content.
+     */
 
-    --sidebar-border: hsl(226 24% 19%);
-    --sidebar-ring: hsl(235 58% 60%);
+    --sidebar-background: hsl(241 92% 6%);
+    --sidebar-foreground: hsl(0 0% 96%);
 
-    --sidebar: hsl(234 42% 9%);
+    /*
+     * Sidebar primary
+     *
+     * Fresh Green
+     */
+    --sidebar-primary: hsl(154 53% 57%);
+    --sidebar-primary-foreground: hsl(170 94% 13%);
+
+    /*
+     * Sidebar accent
+     *
+     * Teal
+     */
+    --sidebar-accent: hsl(170 94% 13%);
+    --sidebar-accent-foreground: hsl(134 75% 72%);
+
+    --sidebar-border: hsl(181 49% 43% / 20%);
+    --sidebar-ring: hsl(154 53% 57%);
+
+    --sidebar: hsl(241 92% 6%);
 }
+
+/* =========================================================
+   BASE
+   ========================================================= */
 
 @layer base {
     * {
         @apply border-border outline-ring/50;
     }
+
     body {
         @apply bg-background text-foreground;
     }
