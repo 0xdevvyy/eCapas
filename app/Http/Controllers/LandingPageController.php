@@ -18,7 +18,7 @@ class LandingPageController extends Controller
 
     public function about(): Response
     {
-        return Inertia::render('Welcome');
+        return Inertia::render('landing/About');
     }
 
     public function services(): Response
