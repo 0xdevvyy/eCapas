@@ -128,7 +128,7 @@ const resources = [
                             <span
                                 class="text-sm leading-4.5 text-foreground/55 transition-colors group-hover:text-foreground/80"
                             >
-                                (045) 123-4567
+                                +63 925 015 4000
                             </span>
                         </a>
 

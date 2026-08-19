@@ -34,6 +34,6 @@ class LandingPageController extends Controller
 
     public function contact(): Response
     {
-        return Inertia::render('Welcome');
+        return Inertia::render('landing/Contact');
     }
 }
