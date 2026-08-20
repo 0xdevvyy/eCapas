@@ -14,3 +14,4 @@ Route::get('/contact', [LandingPageController::class, 'contact'])->name('landing
 
 // post for contact
 Route::inertia('/faq', 'resources/Faq')->name('res.faq');
+Route::inertia('/privacy-policy', 'resources/PrivacyPolicy')->name('res.privacy-policy');

@@ -1,5 +1,7 @@
 <script setup lang="ts">
 import { Head, Link } from '@inertiajs/vue3';
+import { onBeforeUnmount, onMounted, ref } from 'vue';
+
 import {
     ArrowRight,
     CheckCircle2,
@@ -14,6 +16,7 @@ import {
 
 const faqs = [
     {
+        id: 'account-registration',
         category: 'Account & Registration',
         questions: [
             {
@@ -34,7 +37,9 @@ const faqs = [
             },
         ],
     },
+
     {
+        id: 'document-requests',
         category: 'Document Requests',
         questions: [
             {
@@ -56,7 +61,9 @@ const faqs = [
             },
         ],
     },
+
     {
+        id: 'request-status',
         category: 'Request Status & Processing',
         questions: [
             {
@@ -77,7 +84,9 @@ const faqs = [
             },
         ],
     },
+
     {
+        id: 'appointments',
         category: 'Appointments',
         questions: [
             {
@@ -94,7 +103,9 @@ const faqs = [
             },
         ],
     },
+
     {
+        id: 'digital-documents',
         category: 'Digital Documents & Verification',
         questions: [
             {
@@ -111,7 +122,9 @@ const faqs = [
             },
         ],
     },
+
     {
+        id: 'privacy-security',
         category: 'Privacy & Security',
         questions: [
             {
@@ -133,7 +146,8 @@ const faqs = [
 const quickLinks = [
     {
         title: 'Resident Registration',
-        description: 'Learn how registration and municipal verification work.',
+        description:
+            'Learn how registration and municipal verification work.',
         icon: UserCheck,
         href: '/register',
     },
@@ -154,19 +168,66 @@ const quickLinks = [
 ];
 
 const categories = [
-    'All Questions',
-    'Account & Registration',
-    'Document Requests',
-    'Request Status & Processing',
-    'Appointments',
-    'Digital Documents & Verification',
-    'Privacy & Security',
+
+    ...faqs.map((section) => ({
+        label: section.category,
+        id: section.id,
+    })),
 ];
+
+/*
+|--------------------------------------------------------------------------
+| Active Category
+|--------------------------------------------------------------------------
+*/
+
+const activeCategory = ref('all-questions');
+
+let observer: IntersectionObserver | null = null;
+
+onMounted(() => {
+    const sections = document.querySelectorAll<HTMLElement>(
+        '#all-questions > [data-faq-section]',
+    );
+
+    observer = new IntersectionObserver(
+        (entries) => {
+            const visibleSections = entries
+                .filter((entry) => entry.isIntersecting)
+                .sort(
+                    (a, b) =>
+                        a.boundingClientRect.top -
+                        b.boundingClientRect.top,
+                );
+
+            if (visibleSections.length > 0) {
+                activeCategory.value =
+                    visibleSections[0].target.id;
+            }
+        },
+        {
+            rootMargin: '-120px 0px -60% 0px',
+            threshold: 0,
+        },
+    );
+
+    sections.forEach((section) => {
+        observer?.observe(section);
+    });
+});
+
+onBeforeUnmount(() => {
+    observer?.disconnect();
+});
 </script>
 
 <template>
     <Head title="Frequently Asked Questions" />
+
+    <!-- ========================================================= -->
     <!-- Hero -->
+    <!-- ========================================================= -->
+
     <section class="relative overflow-hidden border-b border-border/60">
         <!-- Decorative background -->
         <div
@@ -177,7 +238,9 @@ const categories = [
             class="pointer-events-none absolute top-20 -right-40 size-96 rounded-full bg-accent/10 blur-3xl"
         />
 
-        <div class="relative mx-auto max-w-7xl px-6 py-20 lg:px-8 lg:py-24">
+        <div
+            class="relative mx-auto max-w-7xl px-6 py-20 lg:px-8 lg:py-24"
+        >
             <div class="mx-auto max-w-3xl text-center">
                 <div
                     class="mx-auto flex size-12 items-center justify-center rounded-xl border border-secondary/30 bg-secondary/10 text-accent"
@@ -201,15 +264,18 @@ const categories = [
                 <p
                     class="mx-auto mt-6 max-w-2xl text-base leading-7 text-muted-foreground sm:text-lg"
                 >
-                    Find answers about resident registration, document requests,
-                    appointments, digital documents, and other services provided
-                    through the Capas Municipal System.
+                    Find answers about resident registration, document
+                    requests, appointments, digital documents, and other
+                    services provided through the Capas Municipal System.
                 </p>
             </div>
         </div>
     </section>
 
+    <!-- ========================================================= -->
     <!-- Quick Links -->
+    <!-- ========================================================= -->
+
     <section class="border-b border-border/60 bg-muted/20">
         <div
             class="mx-auto grid max-w-7xl divide-y divide-border px-6 sm:grid-cols-3 sm:divide-x sm:divide-y-0 lg:px-8"
@@ -231,7 +297,9 @@ const categories = [
                         {{ link.title }}
                     </p>
 
-                    <p class="mt-1 text-xs leading-5 text-muted-foreground">
+                    <p
+                        class="mt-1 text-xs leading-5 text-muted-foreground"
+                    >
                         {{ link.description }}
                     </p>
                 </div>
@@ -243,11 +311,19 @@ const categories = [
         </div>
     </section>
 
+    <!-- ========================================================= -->
     <!-- FAQ Content -->
+    <!-- ========================================================= -->
+
     <section>
-        <div class="mx-auto max-w-7xl px-6 py-20 lg:px-8 lg:py-24">
+        <div
+            class="mx-auto max-w-7xl px-6 py-20 lg:px-8 lg:py-24"
+        >
             <div class="grid gap-12 lg:grid-cols-[260px_1fr]">
-                <!-- Category Navigation -->
+                <!-- ================================================= -->
+                <!-- Sidebar -->
+                <!-- ================================================= -->
+
                 <aside class="lg:sticky lg:top-24 lg:self-start">
                     <p
                         class="text-xs font-semibold tracking-[0.16em] text-accent uppercase"
@@ -258,18 +334,29 @@ const categories = [
                     <nav class="mt-4 space-y-1">
                         <a
                             v-for="category in categories"
-                            :key="category"
-                            href="#"
-                            class="block rounded-lg px-3 py-2.5 text-xs font-medium text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
-                            :class="{
-                                'bg-accent/10 text-accent':
-                                    category === 'All Questions',
-                            }"
+                            :key="category.id"
+                            :href="`#${category.id}`"
+                            class="group relative block rounded-lg px-3 py-2.5 text-xs font-medium transition-all duration-200"
+                            :class="
+                                activeCategory === category.id
+                                    ? 'bg-accent/10 text-accent'
+                                    : 'text-muted-foreground hover:bg-muted hover:text-foreground'
+                            "
                         >
-                            {{ category }}
+                            <!-- Active indicator -->
+                            <span
+                                v-if="
+                                    activeCategory ===
+                                    category.id
+                                "
+                                class="absolute top-1/2 left-0 h-5 w-0.5 -translate-y-1/2 rounded-full bg-accent"
+                            />
+
+                            {{ category.label }}
                         </a>
                     </nav>
 
+                    <!-- Help Card -->
                     <div
                         class="mt-8 rounded-2xl border border-border bg-muted/20 p-5"
                     >
@@ -283,7 +370,9 @@ const categories = [
                             Still need help?
                         </h3>
 
-                        <p class="mt-2 text-xs leading-5 text-muted-foreground">
+                        <p
+                            class="mt-2 text-xs leading-5 text-muted-foreground"
+                        >
                             If you cannot find the answer you need, contact the
                             appropriate municipal or barangay office.
                         </p>
@@ -298,9 +387,21 @@ const categories = [
                     </div>
                 </aside>
 
+                <!-- ================================================= -->
                 <!-- Questions -->
-                <div class="space-y-12">
-                    <div v-for="section in faqs" :key="section.category">
+                <!-- ================================================= -->
+
+                <div
+                    id="all-questions"
+                    class="space-y-12"
+                >
+                    <div
+                        v-for="section in faqs"
+                        :id="section.id"
+                        :key="section.category"
+                        data-faq-section
+                        class="scroll-mt-28"
+                    >
                         <div class="mb-5">
                             <p
                                 class="text-xs font-semibold tracking-[0.16em] text-accent uppercase"
@@ -308,7 +409,9 @@ const categories = [
                                 Frequently Asked Questions
                             </p>
 
-                            <h2 class="mt-2 text-2xl font-bold tracking-tight">
+                            <h2
+                                class="mt-2 text-2xl font-bold tracking-tight"
+                            >
                                 {{ section.category }}
                             </h2>
                         </div>
@@ -333,7 +436,9 @@ const categories = [
                                     </span>
                                 </summary>
 
-                                <div class="border-t border-border px-5 py-4">
+                                <div
+                                    class="border-t border-border px-5 py-4"
+                                >
                                     <p
                                         class="text-sm leading-6 text-muted-foreground"
                                     >
@@ -348,9 +453,14 @@ const categories = [
         </div>
     </section>
 
+    <!-- ========================================================= -->
     <!-- How It Works -->
+    <!-- ========================================================= -->
+
     <section class="border-y border-border/60 bg-muted/20">
-        <div class="mx-auto max-w-7xl px-6 py-20 lg:px-8 lg:py-24">
+        <div
+            class="mx-auto max-w-7xl px-6 py-20 lg:px-8 lg:py-24"
+        >
             <div class="text-center">
                 <p
                     class="text-sm font-semibold tracking-[0.18em] text-accent uppercase"
@@ -358,7 +468,9 @@ const categories = [
                     Quick Overview
                 </p>
 
-                <h2 class="mt-3 text-3xl font-bold tracking-tight sm:text-4xl">
+                <h2
+                    class="mt-3 text-3xl font-bold tracking-tight sm:text-4xl"
+                >
                     How the system
                     <span class="text-accent"> works. </span>
                 </h2>
@@ -373,6 +485,7 @@ const categories = [
             </div>
 
             <div class="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+                <!-- Register -->
                 <div class="relative text-center">
                     <div
                         class="mx-auto flex size-12 items-center justify-center rounded-full border border-border bg-card text-accent shadow-sm"
@@ -380,16 +493,19 @@ const categories = [
                         <UserCheck class="size-5" />
                     </div>
 
-                    <h3 class="mt-5 text-sm font-semibold">Register</h3>
+                    <h3 class="mt-5 text-sm font-semibold">
+                        Register
+                    </h3>
 
                     <p
                         class="mx-auto mt-2 max-w-[220px] text-xs leading-5 text-muted-foreground"
                     >
-                        Create your resident account and submit your information
-                        for verification.
+                        Create your resident account and submit your
+                        information for verification.
                     </p>
                 </div>
 
+                <!-- Get Verified -->
                 <div class="relative text-center">
                     <div
                         class="mx-auto flex size-12 items-center justify-center rounded-full border border-border bg-card text-accent shadow-sm"
@@ -397,7 +513,9 @@ const categories = [
                         <ShieldCheck class="size-5" />
                     </div>
 
-                    <h3 class="mt-5 text-sm font-semibold">Get Verified</h3>
+                    <h3 class="mt-5 text-sm font-semibold">
+                        Get Verified
+                    </h3>
 
                     <p
                         class="mx-auto mt-2 max-w-[220px] text-xs leading-5 text-muted-foreground"
@@ -407,6 +525,7 @@ const categories = [
                     </p>
                 </div>
 
+                <!-- Request -->
                 <div class="relative text-center">
                     <div
                         class="mx-auto flex size-12 items-center justify-center rounded-full border border-border bg-card text-accent shadow-sm"
@@ -414,7 +533,9 @@ const categories = [
                         <FileText class="size-5" />
                     </div>
 
-                    <h3 class="mt-5 text-sm font-semibold">Request</h3>
+                    <h3 class="mt-5 text-sm font-semibold">
+                        Request
+                    </h3>
 
                     <p
                         class="mx-auto mt-2 max-w-[220px] text-xs leading-5 text-muted-foreground"
@@ -424,6 +545,7 @@ const categories = [
                     </p>
                 </div>
 
+                <!-- Receive -->
                 <div class="relative text-center">
                     <div
                         class="mx-auto flex size-12 items-center justify-center rounded-full border border-border bg-card text-accent shadow-sm"
@@ -431,7 +553,9 @@ const categories = [
                         <QrCode class="size-5" />
                     </div>
 
-                    <h3 class="mt-5 text-sm font-semibold">Receive</h3>
+                    <h3 class="mt-5 text-sm font-semibold">
+                        Receive
+                    </h3>
 
                     <p
                         class="mx-auto mt-2 max-w-[220px] text-xs leading-5 text-muted-foreground"
@@ -444,9 +568,14 @@ const categories = [
         </div>
     </section>
 
+    <!-- ========================================================= -->
     <!-- Important Information -->
+    <!-- ========================================================= -->
+
     <section>
-        <div class="mx-auto max-w-7xl px-6 py-16 lg:px-8 lg:py-20">
+        <div
+            class="mx-auto max-w-7xl px-6 py-16 lg:px-8 lg:py-20"
+        >
             <div
                 class="flex gap-4 rounded-2xl border border-border bg-card p-6"
             >
@@ -461,7 +590,9 @@ const categories = [
                         Information may vary by service
                     </h3>
 
-                    <p class="mt-2 text-xs leading-6 text-muted-foreground">
+                    <p
+                        class="mt-2 text-xs leading-6 text-muted-foreground"
+                    >
                         The requirements, processing time, approval procedure,
                         and availability of digital issuance may differ
                         depending on the document and the responsible municipal
@@ -473,18 +604,22 @@ const categories = [
         </div>
     </section>
 
+    <!-- ========================================================= -->
     <!-- CTA -->
+    <!-- ========================================================= -->
+
     <section class="pb-20 lg:pb-24">
         <div class="mx-auto max-w-7xl px-6 lg:px-8">
             <div
                 class="relative overflow-hidden rounded-3xl bg-primary px-7 py-12 text-foreground sm:px-10 lg:px-14"
             >
+                <!-- Decorative background -->
                 <div
-                    class="pointer-events-none absolute -top-32 -right-20 size-80 rounded-full bg-primary/20 blur-3xl"
+                    class="pointer-events-none absolute -top-32 -right-20 size-80 rounded-full bg-accent/10 blur-3xl"
                 />
 
                 <div
-                    class="pointer-events-none absolute -bottom-40 left-1/3 size-80 rounded-full bg-primary/20 blur-3xl"
+                    class="pointer-events-none absolute -bottom-40 left-1/3 size-80 rounded-full bg-accent/10 blur-3xl"
                 />
 
                 <div
@@ -504,19 +639,20 @@ const categories = [
                             <span class="text-accent"> answer? </span>
                         </h2>
 
-                        <p class="mt-4 text-sm leading-6 text-foreground/70">
-                            Contact the appropriate municipal or barangay office
-                            for assistance with your concern.
+                        <p
+                            class="mt-4 text-sm leading-6 text-foreground/70"
+                        >
+                            Contact the appropriate municipal or barangay
+                            office for assistance with your concern.
                         </p>
                     </div>
 
-                    <Link href="/contact">
-                        <button
-                            class="inline-flex h-11 shrink-0 items-center gap-2 rounded-lg bg-accent px-5 text-sm font-semibold text-primary transition-colors hover:bg-[#80ED99]"
-                        >
-                            Contact Us
-                            <ArrowRight class="size-4" />
-                        </button>
+                    <Link
+                        href="/contact"
+                        class="inline-flex h-11 shrink-0 items-center gap-2 rounded-lg bg-accent px-5 text-sm font-semibold text-primary transition-colors hover:bg-[#80ED99]"
+                    >
+                        Contact Us
+                        <ArrowRight class="size-4" />
                     </Link>
                 </div>
             </div>
