@@ -1,7 +1,5 @@
 <script setup lang="ts">
 import { Head, Link } from '@inertiajs/vue3';
-import { onBeforeUnmount, onMounted, ref } from 'vue';
-
 import {
     ArrowRight,
     CheckCircle2,
@@ -13,6 +11,7 @@ import {
     ShieldCheck,
     UserCheck,
 } from '@lucide/vue';
+import { onBeforeUnmount, onMounted, ref } from 'vue';
 
 const faqs = [
     {
@@ -146,8 +145,7 @@ const faqs = [
 const quickLinks = [
     {
         title: 'Resident Registration',
-        description:
-            'Learn how registration and municipal verification work.',
+        description: 'Learn how registration and municipal verification work.',
         icon: UserCheck,
         href: '/register',
     },
@@ -168,7 +166,6 @@ const quickLinks = [
 ];
 
 const categories = [
-
     ...faqs.map((section) => ({
         label: section.category,
         id: section.id,
@@ -196,13 +193,11 @@ onMounted(() => {
                 .filter((entry) => entry.isIntersecting)
                 .sort(
                     (a, b) =>
-                        a.boundingClientRect.top -
-                        b.boundingClientRect.top,
+                        a.boundingClientRect.top - b.boundingClientRect.top,
                 );
 
             if (visibleSections.length > 0) {
-                activeCategory.value =
-                    visibleSections[0].target.id;
+                activeCategory.value = visibleSections[0].target.id;
             }
         },
         {
@@ -238,9 +233,7 @@ onBeforeUnmount(() => {
             class="pointer-events-none absolute top-20 -right-40 size-96 rounded-full bg-accent/10 blur-3xl"
         />
 
-        <div
-            class="relative mx-auto max-w-7xl px-6 py-20 lg:px-8 lg:py-24"
-        >
+        <div class="relative mx-auto max-w-7xl px-6 py-20 lg:px-8 lg:py-24">
             <div class="mx-auto max-w-3xl text-center">
                 <div
                     class="mx-auto flex size-12 items-center justify-center rounded-xl border border-secondary/30 bg-secondary/10 text-accent"
@@ -264,9 +257,9 @@ onBeforeUnmount(() => {
                 <p
                     class="mx-auto mt-6 max-w-2xl text-base leading-7 text-muted-foreground sm:text-lg"
                 >
-                    Find answers about resident registration, document
-                    requests, appointments, digital documents, and other
-                    services provided through the Capas Municipal System.
+                    Find answers about resident registration, document requests,
+                    appointments, digital documents, and other services provided
+                    through the Capas Municipal System.
                 </p>
             </div>
         </div>
@@ -297,9 +290,7 @@ onBeforeUnmount(() => {
                         {{ link.title }}
                     </p>
 
-                    <p
-                        class="mt-1 text-xs leading-5 text-muted-foreground"
-                    >
+                    <p class="mt-1 text-xs leading-5 text-muted-foreground">
                         {{ link.description }}
                     </p>
                 </div>
@@ -316,9 +307,7 @@ onBeforeUnmount(() => {
     <!-- ========================================================= -->
 
     <section>
-        <div
-            class="mx-auto max-w-7xl px-6 py-20 lg:px-8 lg:py-24"
-        >
+        <div class="mx-auto max-w-7xl px-6 py-20 lg:px-8 lg:py-24">
             <div class="grid gap-12 lg:grid-cols-[260px_1fr]">
                 <!-- ================================================= -->
                 <!-- Sidebar -->
@@ -345,10 +334,7 @@ onBeforeUnmount(() => {
                         >
                             <!-- Active indicator -->
                             <span
-                                v-if="
-                                    activeCategory ===
-                                    category.id
-                                "
+                                v-if="activeCategory === category.id"
                                 class="absolute top-1/2 left-0 h-5 w-0.5 -translate-y-1/2 rounded-full bg-accent"
                             />
 
@@ -370,9 +356,7 @@ onBeforeUnmount(() => {
                             Still need help?
                         </h3>
 
-                        <p
-                            class="mt-2 text-xs leading-5 text-muted-foreground"
-                        >
+                        <p class="mt-2 text-xs leading-5 text-muted-foreground">
                             If you cannot find the answer you need, contact the
                             appropriate municipal or barangay office.
                         </p>
@@ -391,10 +375,7 @@ onBeforeUnmount(() => {
                 <!-- Questions -->
                 <!-- ================================================= -->
 
-                <div
-                    id="all-questions"
-                    class="space-y-12"
-                >
+                <div id="all-questions" class="space-y-12">
                     <div
                         v-for="section in faqs"
                         :id="section.id"
@@ -409,9 +390,7 @@ onBeforeUnmount(() => {
                                 Frequently Asked Questions
                             </p>
 
-                            <h2
-                                class="mt-2 text-2xl font-bold tracking-tight"
-                            >
+                            <h2 class="mt-2 text-2xl font-bold tracking-tight">
                                 {{ section.category }}
                             </h2>
                         </div>
@@ -436,9 +415,7 @@ onBeforeUnmount(() => {
                                     </span>
                                 </summary>
 
-                                <div
-                                    class="border-t border-border px-5 py-4"
-                                >
+                                <div class="border-t border-border px-5 py-4">
                                     <p
                                         class="text-sm leading-6 text-muted-foreground"
                                     >
@@ -458,9 +435,7 @@ onBeforeUnmount(() => {
     <!-- ========================================================= -->
 
     <section class="border-y border-border/60 bg-muted/20">
-        <div
-            class="mx-auto max-w-7xl px-6 py-20 lg:px-8 lg:py-24"
-        >
+        <div class="mx-auto max-w-7xl px-6 py-20 lg:px-8 lg:py-24">
             <div class="text-center">
                 <p
                     class="text-sm font-semibold tracking-[0.18em] text-accent uppercase"
@@ -468,9 +443,7 @@ onBeforeUnmount(() => {
                     Quick Overview
                 </p>
 
-                <h2
-                    class="mt-3 text-3xl font-bold tracking-tight sm:text-4xl"
-                >
+                <h2 class="mt-3 text-3xl font-bold tracking-tight sm:text-4xl">
                     How the system
                     <span class="text-accent"> works. </span>
                 </h2>
@@ -493,15 +466,13 @@ onBeforeUnmount(() => {
                         <UserCheck class="size-5" />
                     </div>
 
-                    <h3 class="mt-5 text-sm font-semibold">
-                        Register
-                    </h3>
+                    <h3 class="mt-5 text-sm font-semibold">Register</h3>
 
                     <p
                         class="mx-auto mt-2 max-w-[220px] text-xs leading-5 text-muted-foreground"
                     >
-                        Create your resident account and submit your
-                        information for verification.
+                        Create your resident account and submit your information
+                        for verification.
                     </p>
                 </div>
 
@@ -513,9 +484,7 @@ onBeforeUnmount(() => {
                         <ShieldCheck class="size-5" />
                     </div>
 
-                    <h3 class="mt-5 text-sm font-semibold">
-                        Get Verified
-                    </h3>
+                    <h3 class="mt-5 text-sm font-semibold">Get Verified</h3>
 
                     <p
                         class="mx-auto mt-2 max-w-[220px] text-xs leading-5 text-muted-foreground"
@@ -533,9 +502,7 @@ onBeforeUnmount(() => {
                         <FileText class="size-5" />
                     </div>
 
-                    <h3 class="mt-5 text-sm font-semibold">
-                        Request
-                    </h3>
+                    <h3 class="mt-5 text-sm font-semibold">Request</h3>
 
                     <p
                         class="mx-auto mt-2 max-w-[220px] text-xs leading-5 text-muted-foreground"
@@ -553,9 +520,7 @@ onBeforeUnmount(() => {
                         <QrCode class="size-5" />
                     </div>
 
-                    <h3 class="mt-5 text-sm font-semibold">
-                        Receive
-                    </h3>
+                    <h3 class="mt-5 text-sm font-semibold">Receive</h3>
 
                     <p
                         class="mx-auto mt-2 max-w-[220px] text-xs leading-5 text-muted-foreground"
@@ -573,9 +538,7 @@ onBeforeUnmount(() => {
     <!-- ========================================================= -->
 
     <section>
-        <div
-            class="mx-auto max-w-7xl px-6 py-16 lg:px-8 lg:py-20"
-        >
+        <div class="mx-auto max-w-7xl px-6 py-16 lg:px-8 lg:py-20">
             <div
                 class="flex gap-4 rounded-2xl border border-border bg-card p-6"
             >
@@ -590,9 +553,7 @@ onBeforeUnmount(() => {
                         Information may vary by service
                     </h3>
 
-                    <p
-                        class="mt-2 text-xs leading-6 text-muted-foreground"
-                    >
+                    <p class="mt-2 text-xs leading-6 text-muted-foreground">
                         The requirements, processing time, approval procedure,
                         and availability of digital issuance may differ
                         depending on the document and the responsible municipal
@@ -639,11 +600,9 @@ onBeforeUnmount(() => {
                             <span class="text-accent"> answer? </span>
                         </h2>
 
-                        <p
-                            class="mt-4 text-sm leading-6 text-foreground/70"
-                        >
-                            Contact the appropriate municipal or barangay
-                            office for assistance with your concern.
+                        <p class="mt-4 text-sm leading-6 text-foreground/70">
+                            Contact the appropriate municipal or barangay office
+                            for assistance with your concern.
                         </p>
                     </div>
 
