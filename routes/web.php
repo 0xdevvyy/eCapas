@@ -13,3 +13,4 @@ Route::get('/services', [LandingPageController::class, 'services'])->name('landi
 Route::get('/contact', [LandingPageController::class, 'contact'])->name('landing.contact');
 
 // post for contact
+Route::inertia('/faq', 'resources/Faq')->name('res.faq');
