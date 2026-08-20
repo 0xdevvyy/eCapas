@@ -227,7 +227,7 @@ const documentServices = [
 
                         <div class="mt-4 flex flex-col gap-2">
                             <Link
-                                href="/faqs"
+                                href="/faq"
                                 class="inline-flex items-center gap-2 text-xs font-semibold text-accent hover:underline"
                             >
                                 View FAQs
@@ -1089,7 +1089,7 @@ const documentServices = [
                     </p>
                 </div>
 
-                <Link href="/faqs">
+                <Link href="/faq">
                     <button
                         class="inline-flex h-11 items-center gap-2 rounded-lg bg-accent px-5 text-sm font-semibold text-white transition-colors hover:bg-accent/90"
                     >

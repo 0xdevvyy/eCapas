@@ -562,7 +562,7 @@ const administrativeLevels = [
                         </p>
 
                         <div class="mt-7">
-                            <Link href="/request">
+                            <Link href="/login">
                                 <SecondaryButton>
                                     Request a Document
                                     <ArrowRight class="size-4" />
