@@ -322,7 +322,7 @@ const processSteps = [
                             <!-- Request -->
                             <div class="mt-auto pt-6">
                                 <Link
-                                    :href="`/request?service=${encodeURIComponent(service.title)}`"
+                                    :href="`/login`"
                                     class="inline-flex w-full items-center justify-center gap-2 rounded-lg border border-border px-3 py-2 text-xs font-semibold transition-colors hover:border-accent hover:bg-accent hover:text-white"
                                 >
                                     Request Service
@@ -670,7 +670,7 @@ const processSteps = [
                         </p>
                     </div>
 
-                    <Link href="/request">
+                    <Link href="/login">
                         <button
                             class="inline-flex h-11 shrink-0 items-center gap-2 rounded-lg bg-[#57CC99] px-5 text-sm font-semibold text-[#032240] transition-colors hover:bg-[#80ED99]"
                         >

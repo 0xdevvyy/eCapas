@@ -111,7 +111,7 @@ const features = [
                 </p>
 
                 <div class="mt-8 flex flex-wrap gap-3">
-                    <Link href="/request">
+                    <Link href="/login">
                         <PrimaryButton>
                             Request Now
                             <ArrowRight aria-hidden="true" class="size-4" />

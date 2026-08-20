@@ -12,7 +12,7 @@ const quickLinks = [
 ];
 
 const resources = [
-    { label: 'FAQs', href: '/faqs' },
+    { label: 'FAQs', href: '/faq' },
     { label: 'User Guide', href: '/user-guide' },
     { label: 'Privacy Policy', href: '/privacy-policy' },
     { label: 'Terms of Service', href: '/terms' },
