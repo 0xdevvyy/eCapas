@@ -77,8 +77,9 @@
         "fix":[
             "npm run lint",
             "npm run format",
-            "composer lint",
-            "composer rector"
+            "@types:check",
+            "@lint",
+            "@rector"
         ],
         "test": [
             "@php artisan config:clear --ansi",
